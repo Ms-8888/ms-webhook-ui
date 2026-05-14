@@ -26,5 +26,5 @@ export const mockDeliveries = [
 
 export const mockMetricsChart = Array.from({ length: 24 }, (_, i) => ({
   hour: `${String(i).padStart(2, "0")}:00`,
-  rate: +(0.85 + Math.random() * 0.15).toFixed(2),
+  rate: +(0.85 + ((i * 7 + 3) % 15) / 100).toFixed(2),
 }))

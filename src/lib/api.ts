@@ -18,6 +18,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     const body = await res.json().catch(() => ({}))
     throw new Error(body.detail ?? `HTTP ${res.status}`)
   }
+  if (res.status === 204) return undefined as T
   return res.json()
 }
 
@@ -27,7 +28,8 @@ export async function getMetrics() {
 }
 
 export async function getMetricsChart() {
-  return mockMetricsChart
+  if (isMock()) return mockMetricsChart
+  return request<typeof mockMetricsChart>("/metrics/chart")
 }
 
 export async function getEndpoints() {
