@@ -2,16 +2,19 @@ import { useQuery } from "@tanstack/react-query"
 import { StatCard } from "../components/StatCard"
 import { DeliveryRateChart } from "../components/DeliveryRateChart"
 import { getMetrics, getMetricsChart } from "../lib/api"
+import { useStore } from "../store"
 
 export function Overview() {
+  const apiKey = useStore((s) => s.apiKey)
+
   const { data: metrics } = useQuery({
-    queryKey: ["metrics"],
+    queryKey: ["metrics", apiKey],
     queryFn: getMetrics,
     refetchInterval: 5000,
   })
 
   const { data: chart = [] } = useQuery({
-    queryKey: ["metrics-chart"],
+    queryKey: ["metrics-chart", apiKey],
     queryFn: getMetricsChart,
     refetchInterval: 30000,
   })
