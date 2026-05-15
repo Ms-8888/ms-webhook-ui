@@ -2,16 +2,18 @@ import { useState } from "react"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { Plus, Trash2 } from "lucide-react"
 import { createEndpoint, deleteEndpoint, getEndpoints } from "../lib/api"
+import { useStore } from "../store"
 
 export function Endpoints() {
   const qc = useQueryClient()
+  const apiKey = useStore((s) => s.apiKey)
   const [url, setUrl] = useState("")
   const [desc, setDesc] = useState("")
   const [urlError, setUrlError] = useState("")
   const [confirmId, setConfirmId] = useState<number | null>(null)
 
   const { data: endpoints = [], isLoading } = useQuery({
-    queryKey: ["endpoints"],
+    queryKey: ["endpoints", apiKey],
     queryFn: getEndpoints,
     refetchInterval: 30000,
   })

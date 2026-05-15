@@ -11,7 +11,7 @@ export const mockEndpoints = [
   { id: 3, url: "https://staging.acme.com/webhooks", description: "ACME staging", is_active: false, created_at: "2025-01-10T11:00:00Z" },
 ]
 
-export const mockEvents = Array.from({ length: 10 }, (_, i) => ({
+export const mockEvents = Array.from({ length: 20 }, (_, i) => ({
   id: i + 1,
   event_type: ["order.created", "payment.failed", "user.signup"][i % 3],
   payload: { id: 1000 + i, amount: i % 3 === 0 ? 99.99 : undefined },

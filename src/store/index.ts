@@ -21,6 +21,6 @@ export const useStore = create<Store>()(
       mockMode: import.meta.env.VITE_MOCK === "true",
       toggleMockMode: () => set((s) => ({ mockMode: !s.mockMode })),
     }),
-    { name: "ms-webhook-ui", partialize: (s) => ({ apiKey: s.apiKey }) }
+    { name: "ms-webhook-ui", partialize: (s) => ({ apiKey: s.apiKey, mockMode: s.mockMode }) }
   )
 )
