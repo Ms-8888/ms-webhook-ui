@@ -2,19 +2,23 @@ import { useEffect, useRef, useState } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { getEvents } from "../lib/api"
 import { EventDetailModal } from "../components/EventDetailModal"
+import { useStore } from "../store"
 
 type EventRow = { id: number; event_type: string; payload: Record<string, unknown>; created_at: string }
 
 const statusBadge = "bg-gray-100 text-gray-600"
 
+const PAGE_SIZE = 20
+
 export function Events() {
+  const apiKey = useStore((s) => s.apiKey)
   const [page, setPage] = useState(1)
   const [allEvents, setAllEvents] = useState<EventRow[]>([])
   const [selected, setSelected] = useState<{ id: number; type: string } | null>(null)
   const loadedPages = useRef(new Set<number>())
 
   const { data: events = [], isLoading } = useQuery({
-    queryKey: ["events", page],
+    queryKey: ["events", page, apiKey],
     queryFn: () => getEvents(page),
     refetchInterval: 10000,
   })
@@ -60,7 +64,7 @@ export function Events() {
               </button>
             ))}
           </div>
-          {events.length === 20 && (
+          {events.length >= PAGE_SIZE && (
             <button
               onClick={() => setPage((p) => p + 1)}
               className="mt-4 text-sm text-indigo-600 hover:underline"
