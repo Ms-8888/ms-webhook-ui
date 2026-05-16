@@ -12,13 +12,14 @@ const PAGE_SIZE = 20
 
 export function Events() {
   const apiKey = useStore((s) => s.apiKey)
+  const mockMode = useStore((s) => s.mockMode)
   const [page, setPage] = useState(1)
   const [allEvents, setAllEvents] = useState<EventRow[]>([])
   const [selected, setSelected] = useState<{ id: number; type: string } | null>(null)
   const loadedPages = useRef(new Set<number>())
 
   const { data: events = [], isLoading } = useQuery({
-    queryKey: ["events", page, apiKey],
+    queryKey: ["events", page, apiKey, mockMode],
     queryFn: () => getEvents(page),
     refetchInterval: 10000,
   })

@@ -7,13 +7,14 @@ import { useStore } from "../store"
 export function Endpoints() {
   const qc = useQueryClient()
   const apiKey = useStore((s) => s.apiKey)
+  const mockMode = useStore((s) => s.mockMode)
   const [url, setUrl] = useState("")
   const [desc, setDesc] = useState("")
   const [urlError, setUrlError] = useState("")
   const [confirmId, setConfirmId] = useState<number | null>(null)
 
   const { data: endpoints = [], isLoading } = useQuery({
-    queryKey: ["endpoints", apiKey],
+    queryKey: ["endpoints", apiKey, mockMode],
     queryFn: getEndpoints,
     refetchInterval: 30000,
   })
