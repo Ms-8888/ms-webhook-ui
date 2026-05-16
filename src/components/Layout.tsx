@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { NavLink, Outlet } from "react-router-dom"
 import { Activity, Link, Settings, Zap } from "lucide-react"
 import { useStore } from "../store"
@@ -12,7 +12,11 @@ const nav = [
 
 export function Layout() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const { mockMode, apiKey } = useStore()
+  const { mockMode, apiKey, toggleMockMode } = useStore()
+
+  useEffect(() => {
+    if (!apiKey && !mockMode) toggleMockMode()
+  }, [])
 
   return (
     <div className="flex h-screen bg-gray-50">
