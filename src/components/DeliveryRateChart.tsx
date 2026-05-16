@@ -13,7 +13,7 @@ export function DeliveryRateChart({ data }: Props) {
           <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
           <XAxis dataKey="hour" tick={{ fontSize: 11 }} interval={3} />
           <YAxis domain={[0.7, 1]} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} tick={{ fontSize: 11 }} />
-          <Tooltip formatter={(v: number) => `${(v * 100).toFixed(1)}%`} />
+          <Tooltip formatter={(v: number | string) => [`${(Number(v) * 100).toFixed(1)}%`]} />
           <Line type="monotone" dataKey="rate" stroke="#6366f1" strokeWidth={2} dot={false} />
         </LineChart>
       </ResponsiveContainer>
