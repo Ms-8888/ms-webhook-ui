@@ -1,7 +1,7 @@
 import { useStore } from "../store"
 import { mockDeliveries, mockEndpoints, mockEvents, mockMetrics, mockMetricsChart } from "./fixtures"
 
-const BASE = import.meta.env.VITE_API_URL ?? "http://localhost:8000"
+const BASE = (import.meta.env.VITE_API_URL ?? "http://localhost:8000").replace(/\/$/, "")
 
 function isMock() {
   return useStore.getState().mockMode
