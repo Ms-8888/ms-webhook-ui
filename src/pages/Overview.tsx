@@ -6,15 +6,16 @@ import { useStore } from "../store"
 
 export function Overview() {
   const apiKey = useStore((s) => s.apiKey)
+  const mockMode = useStore((s) => s.mockMode)
 
   const { data: metrics } = useQuery({
-    queryKey: ["metrics", apiKey],
+    queryKey: ["metrics", apiKey, mockMode],
     queryFn: getMetrics,
     refetchInterval: 5000,
   })
 
   const { data: chart = [] } = useQuery({
-    queryKey: ["metrics-chart", apiKey],
+    queryKey: ["metrics-chart", apiKey, mockMode],
     queryFn: getMetricsChart,
     refetchInterval: 30000,
   })
