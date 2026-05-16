@@ -12,11 +12,13 @@ const nav = [
 
 export function Layout() {
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const { mockMode, apiKey, toggleMockMode } = useStore()
+  const { mockMode, apiKey, setMockMode } = useStore()
 
   useEffect(() => {
-    if (!apiKey && !mockMode) toggleMockMode()
-  }, [])
+    // auto-enable mock mode on first visit — read store directly to avoid stale closure
+    const { apiKey: key, mockMode: mock } = useStore.getState()
+    if (!key && !mock) setMockMode(true)
+  }, []) // intentionally empty — runs once on mount only
 
   return (
     <div className="flex h-screen bg-gray-50">
