@@ -9,6 +9,7 @@ interface AuthSlice {
 interface UiSlice {
   mockMode: boolean
   toggleMockMode: () => void
+  setMockMode: (val: boolean) => void
 }
 
 type Store = AuthSlice & UiSlice
@@ -20,6 +21,7 @@ export const useStore = create<Store>()(
       setApiKey: (key) => set({ apiKey: key }),
       mockMode: import.meta.env.VITE_MOCK !== "false",
       toggleMockMode: () => set((s) => ({ mockMode: !s.mockMode })),
+      setMockMode: (val) => set({ mockMode: val }),
     }),
     { name: "ms-webhook-ui", partialize: (s) => ({ apiKey: s.apiKey, mockMode: s.mockMode }) }
   )
