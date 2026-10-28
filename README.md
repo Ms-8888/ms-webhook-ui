@@ -32,7 +32,7 @@ Opens at `http://localhost:5173` in **mock mode** by default — no backend need
 
 ## Connect to the real API
 
-1. Run `ms-webhook-api`: `docker compose -f deploy/docker-compose.yml up -d && python -m app.seed`
+1. Run `ms-webhook-api` (see its README Quick Start) and seed a tenant to get an API key
 2. Click the **Settings** gear → enter your API key → **Test connection**
 3. Toggle **Mock Mode** off in Settings
 
