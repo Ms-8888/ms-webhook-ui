@@ -1,6 +1,6 @@
 # ms-webhook-ui
 
-Real-time dashboard for monitoring webhook delivery status and failures. Connects to [ms-webhook-api](https://github.com/Ms-8888/ms-webhook-api) — works standalone in mock mode with no backend required.
+Dashboard for monitoring webhook delivery status and failures; it refreshes itself every few seconds. Connects to [ms-webhook-api](https://github.com/Ms-8888/ms-webhook-api) — works standalone in mock mode with no backend required.
 
 **[Live demo →](https://ms-8888.github.io/ms-webhook-ui/)**  
 Demo API key for the hosted backend: `314b254a8cd3d91f4c08888d8b5544db3c6d24d8b17528fb10fd2d4375956421` <!-- gitleaks:allow --> (shared public demo key, send no real data). Paste it into Settings to connect. To use your own backend, run ms-webhook-api locally and paste the key it prints.
@@ -54,4 +54,4 @@ GitHub Actions (`.github/workflows/ci.yml`) runs lint, typecheck, build and test
 
 ## Stack
 
-React 18 · Vite · TypeScript · Tailwind CSS · TanStack Query · Zustand · Recharts · React Router v6
+React 19 · Vite · TypeScript · Tailwind CSS · TanStack Query · Zustand · Recharts · React Router v6
