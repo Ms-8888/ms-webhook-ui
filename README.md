@@ -3,7 +3,7 @@
 Real-time dashboard for monitoring webhook delivery status and failures. Connects to [ms-webhook-api](https://github.com/Ms-8888/ms-webhook-api) — works standalone in mock mode with no backend required.
 
 **[Live demo →](https://ms-8888.github.io/ms-webhook-ui/)**  
-Demo API key: `YOUR_DEMO_API_KEY` — paste into Settings to connect the live backend.
+To connect your own backend, run ms-webhook-api locally and paste the API key it prints into Settings.
 
 ---
 
