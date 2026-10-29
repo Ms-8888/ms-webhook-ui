@@ -54,4 +54,4 @@ GitHub Actions (`.github/workflows/ci.yml`) runs lint, typecheck, build and test
 
 ## Stack
 
-React 19 · Vite · TypeScript · Tailwind CSS · TanStack Query · Zustand · Recharts · React Router v6
+React 19 · Vite · TypeScript · Tailwind CSS · TanStack Query · Zustand · Recharts · React Router v7
