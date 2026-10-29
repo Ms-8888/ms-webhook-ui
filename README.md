@@ -44,6 +44,14 @@ VITE_MOCK=false
 
 ---
 
+## Tests and CI
+
+Unit and component tests run with Vitest and React Testing Library (`npm test`). They cover the API client (mock mode and header/error handling), the Zustand store, and a few components (stat card, overview page, settings drawer). It is a small suite, not full coverage.
+
+GitHub Actions (`.github/workflows/ci.yml`) runs lint, typecheck, build and tests on pushes and pull requests to `master`.
+
+---
+
 ## Stack
 
 React 18 · Vite · TypeScript · Tailwind CSS · TanStack Query · Zustand · Recharts · React Router v6
